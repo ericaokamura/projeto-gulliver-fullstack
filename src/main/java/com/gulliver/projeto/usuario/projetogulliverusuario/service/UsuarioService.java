@@ -7,6 +7,8 @@ import com.gulliver.projeto.usuario.projetogulliverusuario.repository.UsuarioRep
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +23,19 @@ public class UsuarioService {
             return UsuarioMapper.convertToDTO(usuario.get());
         } else {
             throw new Exception("Usuário não encontrado.");
+        }
+    }
+
+    public List<UsuarioDTO> retornaUsuarios() throws Exception {
+        List<Usuario> usuarios = repository.findAll();
+        if(!usuarios.isEmpty()) {
+            List<UsuarioDTO> dtos = new ArrayList<>();
+            usuarios.forEach(u -> {
+                dtos.add(UsuarioMapper.convertToDTO(u));
+            });
+            return dtos;
+        } else {
+            throw new Exception("Não há usuários não cadastrados.");
         }
     }
 

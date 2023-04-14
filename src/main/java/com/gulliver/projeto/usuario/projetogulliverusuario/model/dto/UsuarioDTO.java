@@ -10,8 +10,6 @@ public class UsuarioDTO {
     private Long id;
     private String nomeCompleto;
     private String login;
-    private Date dataNascimento;
     private String senha;
     private String email;
-    private String endereco;
 }

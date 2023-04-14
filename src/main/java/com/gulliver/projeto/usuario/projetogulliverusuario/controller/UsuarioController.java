@@ -7,7 +7,10 @@ import com.gulliver.projeto.usuario.projetogulliverusuario.service.UsuarioServic
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/usuario")
+import java.util.List;
+
+@RestController()
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     @Autowired
@@ -17,6 +20,12 @@ public class UsuarioController {
     public UsuarioDTO retornaUsuario(@PathVariable("id") Long id) throws Exception {
         UsuarioDTO dtoUsuario = service.retornaUsuario(id);
         return dtoUsuario;
+    }
+
+    @GetMapping("/")
+    public List<UsuarioDTO> retornaUsuarios() throws Exception {
+        List<UsuarioDTO> dtosUsuario = service.retornaUsuarios();
+        return dtosUsuario;
     }
 
     @PostMapping("/")

@@ -4,7 +4,6 @@ import com.gulliver.projeto.usuario.projetogulliverusuario.model.Usuario;
 import com.gulliver.projeto.usuario.projetogulliverusuario.model.dto.UsuarioDTO;
 import org.springframework.stereotype.Component;
 
-@Component
 public class UsuarioMapper {
 
     public static UsuarioDTO convertToDTO(Usuario usuario) {

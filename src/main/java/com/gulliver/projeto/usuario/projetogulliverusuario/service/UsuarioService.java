@@ -35,7 +35,7 @@ public class UsuarioService {
             });
             return dtos;
         } else {
-            throw new Exception("Não há usuários não cadastrados.");
+            throw new Exception("Não há usuários cadastrados.");
         }
     }
 
@@ -46,7 +46,10 @@ public class UsuarioService {
     public UsuarioDTO editaUsuario(Long id, UsuarioDTO dto) throws Exception {
         Optional<Usuario> usuarioRetorno = repository.findById(id);
         if(usuarioRetorno.isPresent()) {
-            return dto;
+            Usuario usuario = UsuarioMapper.convertToModel(dto);
+            usuario.setId(id);
+            repository.save(usuario);
+            return UsuarioMapper.convertToDTO(usuario);
         } else {
             throw new Exception("Usuário não encontrado.");
         }

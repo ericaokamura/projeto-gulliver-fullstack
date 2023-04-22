@@ -6,6 +6,7 @@ import com.gulliver.projeto.usuario.projetogulliverusuario.model.dto.UsuarioDTO;
 import com.gulliver.projeto.usuario.projetogulliverusuario.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +40,13 @@ public class UsuarioService {
         }
     }
 
-    public void cadastraUsuario(UsuarioDTO dto) {
-        repository.save(UsuarioMapper.convertToModel(dto));
+    public UsuarioDTO cadastraUsuario(UsuarioDTO dto) throws Exception {
+        Optional<Usuario> usuario = repository.findByEmail(dto.getEmail());
+        if(usuario.isPresent()) {
+            throw new Exception("Usuário já cadastrado.");
+        } else {
+            return UsuarioMapper.convertToDTO(repository.save(UsuarioMapper.convertToModel(dto)));
+        }
     }
 
     public UsuarioDTO editaUsuario(Long id, UsuarioDTO dto) throws Exception {
@@ -59,6 +65,15 @@ public class UsuarioService {
         Optional<Usuario> usuarioRetorno = repository.findById(id);
         if(usuarioRetorno.isPresent()) {
             repository.delete(usuarioRetorno.get());
+        } else {
+            throw new Exception("Usuário não encontrado.");
+        }
+    }
+
+    public UsuarioDTO retornaUsuarioPorEmail(String email) throws Exception {
+        Optional<Usuario> usuario = repository.findByEmail(email);
+        if(usuario.isPresent()) {
+            return UsuarioMapper.convertToDTO(usuario.get());
         } else {
             throw new Exception("Usuário não encontrado.");
         }

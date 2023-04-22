@@ -11,9 +11,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     Optional<Usuario> findById(Long id);
 
-    Usuario saveAndFlush(Usuario usuario);
+    Usuario save(Usuario usuario);
 
     @Override
     void delete(Usuario usuario);
+
+    Optional<Usuario> findByEmail(String email);
 }
 

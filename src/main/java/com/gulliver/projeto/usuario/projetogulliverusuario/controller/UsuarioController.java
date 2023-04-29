@@ -22,9 +22,7 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO> retornaUsuario(@PathVariable("id") Long id) throws Exception {
         try {
             UsuarioDTO dtoUsuario = service.retornaUsuario(id);
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.set("Access-Control-Allow-Origin", "*");
-            return ResponseEntity.ok().headers(responseHeaders).body(dtoUsuario);
+            return ResponseEntity.ok().body(dtoUsuario);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseEntity.badRequest().build();
@@ -46,9 +44,7 @@ public class UsuarioController {
     public ResponseEntity<List<UsuarioDTO>> retornaUsuarios() throws Exception {
         try {
             List<UsuarioDTO> dtosUsuario = service.retornaUsuarios();
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.set("Access-Control-Allow-Origin", "*");
-            return ResponseEntity.ok().headers(responseHeaders).body(dtosUsuario);
+            return ResponseEntity.ok().body(dtosUsuario);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseEntity.badRequest().build();
@@ -70,9 +66,7 @@ public class UsuarioController {
     @PutMapping("/{id}")
     public ResponseEntity<UsuarioDTO> editaUsuario(@PathVariable("id") Long id, @RequestBody UsuarioDTO dto) throws Exception {
         try {
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.set("Access-Control-Allow-Origin", "*");
-            return ResponseEntity.ok().headers(responseHeaders).body(service.editaUsuario(id, dto));
+            return ResponseEntity.ok().body(service.editaUsuario(id, dto));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseEntity.badRequest().build();
@@ -80,11 +74,13 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletaUsuario(@PathVariable("id") Long id) throws Exception {
+    public ResponseEntity deletaUsuario(@PathVariable("id") Long id) throws Exception {
         try {
             service.deletaUsuario(id);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().build();
         }
     }
 }

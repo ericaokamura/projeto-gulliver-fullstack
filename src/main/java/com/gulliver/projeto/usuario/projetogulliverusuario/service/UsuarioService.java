@@ -22,9 +22,7 @@ public class UsuarioService {
         Optional<Usuario> usuario = repository.findById(id);
         if(usuario.isPresent()) {
             return UsuarioMapper.convertToDTO(usuario.get());
-        } else {
-            throw new Exception("Usuário não encontrado.");
-        }
+        } return null;
     }
 
     public List<UsuarioDTO> retornaUsuarios() throws Exception {
@@ -35,9 +33,7 @@ public class UsuarioService {
                 dtos.add(UsuarioMapper.convertToDTO(u));
             });
             return dtos;
-        } else {
-            throw new Exception("Não há usuários cadastrados.");
-        }
+        } return null;
     }
 
     public UsuarioDTO cadastraUsuario(UsuarioDTO dto) throws Exception {
@@ -74,8 +70,6 @@ public class UsuarioService {
         Optional<Usuario> usuario = repository.findByEmail(email);
         if(usuario.isPresent()) {
             return UsuarioMapper.convertToDTO(usuario.get());
-        } else {
-            throw new Exception("Usuário não encontrado.");
-        }
+        } return null;
     }
 }

@@ -35,9 +35,7 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO> retornaUsuarioPorEmail(@PathVariable("email") String email) throws Exception {
         try {
             UsuarioDTO dtoUsuario = service.retornaUsuarioPorEmail(email);
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.set("Access-Control-Allow-Origin", "*");
-            return ResponseEntity.ok().headers(responseHeaders).body(dtoUsuario);
+            return ResponseEntity.ok().body(dtoUsuario);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseEntity.badRequest().build();

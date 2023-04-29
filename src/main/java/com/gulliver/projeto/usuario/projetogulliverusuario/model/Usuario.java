@@ -18,12 +18,12 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotEmpty
-    private String nomeCompleto;
+    private String fullName;
     @NotEmpty
     private String login;
     @NotEmpty
     @Size(min = 8, max = 200, message = "Senha deve ter no mínimo 8 caracteres")
-    private String senha;
+    private String password;
     @NotEmpty
     @Email(message = "Email deve ser válido")
     private String email;

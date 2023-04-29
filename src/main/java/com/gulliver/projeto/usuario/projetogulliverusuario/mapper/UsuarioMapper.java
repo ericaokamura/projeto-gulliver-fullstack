@@ -11,8 +11,8 @@ public class UsuarioMapper {
         if(usuario != null) {
             dto.setId(usuario.getId());
             dto.setEmail(usuario.getEmail());
-            dto.setNomeCompleto(usuario.getNomeCompleto());
-            dto.setSenha(usuario.getSenha());
+            dto.setFullName(usuario.getFullName());
+            dto.setPassword(usuario.getPassword());
             dto.setLogin(usuario.getLogin());
         }
         return dto;
@@ -23,8 +23,8 @@ public class UsuarioMapper {
         if(dto != null) {
             usuario.setId(dto.getId());
             usuario.setEmail(dto.getEmail());
-            usuario.setNomeCompleto(dto.getNomeCompleto());
-            usuario.setSenha(dto.getSenha());
+            usuario.setFullName(dto.getFullName());
+            usuario.setPassword(dto.getPassword());
             usuario.setLogin(dto.getLogin());
         }
         return usuario;

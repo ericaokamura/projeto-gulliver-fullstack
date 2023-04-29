@@ -8,8 +8,8 @@ import java.util.Date;
 public class UsuarioDTO {
 
     private Long id;
-    private String nomeCompleto;
+    private String fullName;
     private String login;
-    private String senha;
+    private String password;
     private String email;
 }

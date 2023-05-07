@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.gulliver.projeto.usuario.projetogulliverusuario
+web: java -jar target/classes:target/dependency/*

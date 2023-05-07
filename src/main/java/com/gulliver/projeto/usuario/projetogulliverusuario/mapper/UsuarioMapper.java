@@ -2,7 +2,6 @@ package com.gulliver.projeto.usuario.projetogulliverusuario.mapper;
 
 import com.gulliver.projeto.usuario.projetogulliverusuario.model.Usuario;
 import com.gulliver.projeto.usuario.projetogulliverusuario.model.dto.UsuarioDTO;
-import org.springframework.stereotype.Component;
 
 public class UsuarioMapper {
 

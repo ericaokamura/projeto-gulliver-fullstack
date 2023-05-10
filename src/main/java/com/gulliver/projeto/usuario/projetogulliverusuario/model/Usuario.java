@@ -1,10 +1,7 @@
 package com.gulliver.projeto.usuario.projetogulliverusuario.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 import jakarta.validation.constraints.Email;
@@ -12,6 +9,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Entity
+@Table(schema="usuario")
 @Data
 public class Usuario {
 
